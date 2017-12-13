@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Hal 9000</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<link rel='stylesheet' href='/stylesheets/style.css'/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body ng-controller="mainController">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href="#">Hal 9000</a>
+	<div class="collapse navbar-collapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="#!/home">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Learn</a>
+			</li>
+			<li class="nav-item dropdown-favorites">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+				   aria-expanded="false">Favorites</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+				   aria-expanded="false">Admin</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01">
+					<a class="dropdown-item" href="#!/addPolicy">Add Policy</a>
+					<a class="dropdown-item" href="#!/editPolicy">Edit Policy</a>
+					<a class="dropdown-item" href="#">Add Checklist</a>
+					<a class="dropdown-item" href="#">Edit Checklist</a>
+				</div>
+			</li>
+		</ul>
+		<div class="form-inline my-2 my-lg-0">
+			<form ng-submit="search()">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search Policies..." aria-label="Search"
+					   ng-model="searchTerm">
+				<button class="btn btn-outline-success my-2 my-sm-0" ng-click="search()">Search</button>
+			</form>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-title">Category/Subcategories</li>
+				<li class="nav-item" ng-repeat="category in categories track by $index">
+					<a class="nav-link" data-toggle="collapse" data-target="#collapseExample"
+					   href="">{{category.name}}</a>
+					<div class="collapse" id="collapseExample" style="margin-left: 10px">
+						<ul class="nav nav-pills flex-column">
+							<li class="nav-item">
+								<a class="nav-link" href="">{{category.subcategory.name}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</nav>
+		<main ng-view class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main"></main>
+</body>
+
+<script src="/javascripts/angular.min.js"></script>
+<script src="/javascripts/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<script src="/javascripts/angular-route.min.js"></script>
+<script src="/javascripts/angular-sanitize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/angular-file-upload.min.js"></script>
+<script src="/javascripts/mainController.js"></script>
+<script src="/javascripts/routeConfig.js"></script>
+<script src="/javascripts/dataServices.js"></script>
+<script src="/javascripts/homeController.js"></script>
+<script src="/javascripts/addPolicyController.js"></script>
+<script src="/javascripts/editPolicyController.js"></script>
+<script src="/javascripts/policyController.js"></script>
+<script src="/javascripts/searchController.js"></script>
+
+</html>

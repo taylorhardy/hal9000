@@ -1,0 +1,30 @@
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="container">
+		<div class="row container">
+			<h1>{{vm.policy.title}}</h1>
+		</div>
+		<hr/>
+		<div class="row container">
+			<p>{{vm.policy.description}}</p>
+		</div>
+		<hr/>
+		<div class="row container">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="step in vm.policy.steps | orderBy: step.ordering"><md-checkbox aria-label="checkbox" class="md-primary"></md-checkbox> {{step.text}}</li>
+			</ul>
+		</div>
+		<hr ng-if="vm.policy.additionalInfo[0].title"/>
+		<h4 ng-if="vm.policy.additionalInfo[0].title">Additional Info</h4>
+		<div class="row container" ng-repeat="info in vm.policy.additionalInfo" ng-if="vm.policy.additionalInfo[0].title">
+			<h6 style="width: 100%"><u>{{info.title}}</u></h6>
+			<p>{{info.text}}</p>
+		</div>
+		<hr/>
+		<h4 ng-if="vm.policy.links[0].title">Helpful links</h4>
+		<div class="row container" ng-if="vm.policy.links[0].title">
+			<a class="btn btn-primary" ng-repeat="link in vm.policy.links" href="{{link.href}}" role="button" style="margin: 5px" >{{link.title}}</a>
+		</div>
+	</div>
+</div>

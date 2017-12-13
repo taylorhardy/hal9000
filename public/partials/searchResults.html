@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Search Results:</h1>
+	<div class="row result card" ng-repeat="result in vm.results | orderBy: result.hits" ng-click="vm.viewPolicy(result.name)" ng-if="vm.results.length > 0">
+		<h3 class="card-header">{{result.title}}</h3>
+		<p class="card-body" style="padding-top: 5px; padding-bottom:0px">{{result.description}}</p>
+		<span class="blockquote-footer">Tags: {{result.tags}}</span>
+	</div>
+	<div class="row" ng-if="vm.results.length < 1">
+		<h3>No Results</h3>
+	</div>
+</div>

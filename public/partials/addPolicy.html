@@ -1,0 +1,105 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="container">
+		<md-input-container>
+			<label>Page Title</label>
+			<input ng-model="vm.policy.title">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Category</label>
+			<input ng-model="vm.policy.category.name">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Sub Category</label>
+			<input ng-model="vm.policy.category.subcategory.name">
+		</md-input-container>
+		<md-input-container>
+			<label>Tags</label>
+			<input ng-model="vm.policy.tags">
+		</md-input-container>
+		<div class="container">
+			<md-input-container class="md-block">
+				<label>Description</label>
+				<textarea ng-model="vm.policy.description" rows="5"></textarea>
+			</md-input-container>
+		</div>
+
+		<table class="table" style="margin-top: 2%">
+			<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Text</th>
+				<th scope="col">Active</th>
+				<th scope="col">Add/Remove</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="step in vm.policy.steps | orderBy: 'ordering'">
+				<th>
+					<md-input-container style="width: 50px">
+						<label>Order</label>
+						<input ng-model="step.ordering">
+					</md-input-container>
+				<td style="width: 100%">
+					<md-input-container style="width: 100%">
+						<label>Text</label>
+						<input ng-model="step.text">
+					</md-input-container>
+				</td>
+				<td>
+					<md-checkbox class="md-primary" ng-model="step.active"></md-checkbox>
+				</td>
+				<td>
+					<button class="btn btn-outline-danger" ng-click="vm.removeStep($index)">-</button>
+					<button class="btn btn-outline-success" ng-click="vm.addStep()">+</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<h6>Additional Info</h6>
+			</div>
+			<div ng-repeat="info in vm.policy.additionalInfo">
+				<md-input-container>
+					<label>Info Title</label>
+					<input ng-model="info.title">
+				</md-input-container>
+				<button class="btn btn-outline-danger" ng-click="vm.removeInfo($index)">-</button>
+				<button class="btn btn-outline-success" ng-click="vm.addInfo()">+</button>
+				<md-input-container class="md-block">
+					<label>Description</label>
+					<textarea ng-model="info.text" rows="3"></textarea>
+				</md-input-container>
+			</div>
+		</div>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<h6>Helpful links </h6>
+			</div>
+			<div class="row">
+				<div class="col-sm" ng-repeat="link in vm.policy.links track by $index">
+					<md-input-container>
+						<label>Title</label>
+						<input ng-model="link.title">
+					</md-input-container>
+					<md-input-container>
+						<label>href</label>
+						<input ng-model="link.href">
+					</md-input-container>
+					<md-checkbox class="md-primary" ng-model="link.active"></md-checkbox>
+					<button class="btn btn-outline-danger btn-sm" ng-click="vm.removeLink($index)">-</button>
+					<button class="btn-outline-success btn-sm" ng-click="vm.addLink()">+</button>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div>
+			<button class="btn btn-outline-danger my-2 my-sm-0 " ng-click-="vm.cancel()">Cancel</button>
+			<button class="btn btn-outline-success my-2 my-sm-0 float-lg-right" ng-click="vm.submitPolicy()">Submit</button>
+		</div>
+	</div>
+</div>
